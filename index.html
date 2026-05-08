@@ -459,7 +459,7 @@
           <li>Weekly reports</li><li>Google indexing</li>
           <li>White-label dashboard</li><li>Email support</li>
         </ul>
-        <a href="https://admin.spotonnexus.com/api/nexus/checkout?plan=local_launch" class="pc-btn ghost">Get Started</a>
+        <a id="checkout-local-launch" href="https://admin.spotonnexus.com/api/nexus/checkout?plan=local_launch" class="pc-btn ghost">Get Started</a>
       </div>
       <!-- Founding Agency -->
       <div class="pcard founder">
@@ -474,7 +474,7 @@
           <li>Google indexing</li><li>White-label dashboard</li>
           <li>Email support</li><li>Case study &amp; testimonial rights</li>
         </ul>
-        <a href="https://admin.spotonnexus.com/api/nexus/checkout?plan=local_launch" class="pc-btn orange">Claim Offer &rarr;</a>
+        <a id="checkout-founding-agency" href="https://admin.spotonnexus.com/api/nexus/checkout?plan=founding_agency" class="pc-btn orange">Claim Offer &rarr;</a>
       </div>
       <!-- Growth Bundle -->
       <div class="pcard popular">
@@ -488,7 +488,7 @@
           <li>Google indexing</li><li>White-label dashboard</li>
           <li>Priority support</li>
         </ul>
-        <a href="https://admin.spotonnexus.com/api/nexus/checkout?plan=growth_bundle" class="pc-btn blue">Get Started &rarr;</a>
+        <a id="checkout-growth-bundle" href="https://admin.spotonnexus.com/api/nexus/checkout?plan=growth_bundle" class="pc-btn blue">Get Started &rarr;</a>
       </div>
       <!-- Enterprise -->
       <div class="pcard">
@@ -504,7 +504,7 @@
           <li>All features included</li><li>Dedicated support</li>
           <li>Custom integrations</li><li>SLA guarantee</li>
         </ul>
-        <a href="https://admin.spotonnexus.com/api/nexus/checkout?plan=addon_site" class="pc-btn ghost">Contact Sales</a>
+        <a id="checkout-enterprise" href="tel:8447231900" class="pc-btn ghost">Contact Sales</a>
       </div>
     </div>
   </div>
@@ -593,9 +593,23 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  // Pricing toggle
+  // Pricing toggle + dynamic Stripe checkout links
+  const checkoutBase = 'https://admin.spotonnexus.com/api/nexus/checkout';
   const monthly = ['$1,997','$1,497','$3,000','$5,000'];
   const annual  = ['$1,598','$1,198','$2,400','$4,000'];
+
+  function setCheckoutLinks(isAnnual) {
+    const localLaunchBtn = document.getElementById('checkout-local-launch');
+    const foundingAgencyBtn = document.getElementById('checkout-founding-agency');
+    const growthBundleBtn = document.getElementById('checkout-growth-bundle');
+    const enterpriseBtn = document.getElementById('checkout-enterprise');
+
+    if (localLaunchBtn) localLaunchBtn.href = `${checkoutBase}?plan=local_launch`;
+    if (foundingAgencyBtn) foundingAgencyBtn.href = `${checkoutBase}?plan=founding_agency`;
+    if (growthBundleBtn) growthBundleBtn.href = `${checkoutBase}?plan=${isAnnual ? 'growth_bundle_annual' : 'growth_bundle'}`;
+    if (enterpriseBtn) enterpriseBtn.href = 'tel:8447231900';
+  }
+
   function togglePricing() {
     const on = document.getElementById('annualToggle').checked;
     document.getElementById('lbl-m').classList.toggle('on', !on);
@@ -604,7 +618,12 @@
       const el = document.getElementById('p' + i);
       if (el) el.textContent = (on ? annual : monthly)[i - 1];
     });
+    setCheckoutLinks(on);
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    setCheckoutLinks(false);
+  });
 
   // Scroll reveal
   const observer = new IntersectionObserver(entries => {
