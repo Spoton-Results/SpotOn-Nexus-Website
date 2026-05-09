@@ -1,0 +1,50 @@
+Premium brighter CSS changes to apply to index.html
+
+1) Replace the :root block with:
+
+:root {
+  --bg:        #0f172a;
+  --bg-card:   #111827;
+  --bg-card2:  #1f2937;
+  --blue:      #3b82f6;
+  --blue-dark: #2563eb;
+  --blue-glow: rgba(59,130,246,0.24);
+  --blue-ring: rgba(59,130,246,0.38);
+  --fg:        #f8fafc;
+  --fg-muted:  #cbd5e1;
+  --fg-dim:    #94a3b8;
+  --border:    rgba(255,255,255,0.12);
+  --border-md: rgba(255,255,255,0.18);
+  --green:     #22c55e;
+  --orange:    #f97316;
+  --red:       #ef4444;
+}
+
+2) Replace the .hero block with:
+
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding-top: 62px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.20) 0%, transparent 65%),
+    linear-gradient(180deg, #111827 0%, #0f172a 100%);
+  position: relative; overflow: hidden;
+}
+
+3) Paste this before the responsive section:
+
+.pcard,
+.sol-card,
+.prob-card,
+.stat,
+.logo-chip,
+.faq-q,
+.faq-a {
+  background: linear-gradient(180deg, #162033 0%, #111827 100%);
+}
+
+.logos,
+footer {
+  background: #111827;
+}
