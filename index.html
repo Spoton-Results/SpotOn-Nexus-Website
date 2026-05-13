@@ -3,33 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Generate thousands of optimized local SEO pages for your agency clients. Manage quality, indexing, and reporting from one dashboard.">
-  <title>Nexus by SpotOn — Scale Local SEO Without Scaling Headcount</title>
+  <meta name="description" content="Managed local search infrastructure for agencies. SpotOn Nexus builds, publishes, organizes, and maintains structured local visibility systems.">
+  <title>SpotOn Nexus — Managed Local Search Infrastructure for Agencies</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #f8fafc;
-      --bg-card:   #ffffff;
-      --bg-card2:  #f1f5f9;
-      --blue:      #2563eb;
+      --bg: #f8fafc;
+      --bg-soft: #eef6ff;
+      --card: #ffffff;
+      --card-2: #f1f5f9;
+      --fg: #0f172a;
+      --muted: #475569;
+      --dim: #64748b;
+      --blue: #2563eb;
       --blue-dark: #1d4ed8;
-      --blue-glow: rgba(37,99,235,0.10);
+      --blue-soft: rgba(37,99,235,0.10);
       --blue-ring: rgba(37,99,235,0.22);
-      --fg:        #0f172a;
-      --fg-muted:  #475569;
-      --fg-dim:    #64748b;
-      --border:    rgba(15,23,42,0.10);
+      --green: #16a34a;
+      --orange: #ea580c;
+      --red: #dc2626;
+      --border: rgba(15,23,42,0.10);
       --border-md: rgba(15,23,42,0.16);
-      --green:     #16a34a;
-      --orange:    #ea580c;
-      --red:       #dc2626;
+      --shadow: 0 1px 2px rgba(15,23,42,0.04), 0 14px 36px rgba(15,23,42,0.07);
     }
 
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: linear-gradient(to bottom, #ffffff 0%, #f8fbff 45%, #f8fafc 100%);
@@ -38,198 +41,342 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    h1,h2,h3,h4 { line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; }
-    a { text-decoration: none; color: inherit; }
 
-    .container  { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-    .section    { padding: 96px 0; }
-    .sec-label  { color: var(--blue); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-    .sec-title  { font-size: clamp(30px,3.8vw,46px); margin-bottom: 16px; }
-    .sec-sub    { color: var(--fg-muted); font-size: 17px; max-width: 540px; line-height: 1.65; }
-    .badge      { display: inline-flex; align-items: center; gap: 7px; background: var(--blue-glow); border: 1px solid var(--blue-ring); color: var(--blue); font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 100px; }
-    .btn        { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; border: none; transition: all 0.2s; cursor: pointer; }
-    .btn-blue   { background: var(--blue); color: #fff; box-shadow: 0 8px 22px rgba(37,99,235,0.22); }
-    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 12px 30px rgba(37,99,235,0.32); }
-    .btn-ghost  { background: #fff; color: var(--fg-muted); border: 1px solid var(--border-md); }
-    .btn-ghost:hover { color: var(--fg); border-color: rgba(15,23,42,0.24); background: #ffffff; }
+    a { color: inherit; text-decoration: none; }
+    h1,h2,h3,h4 { line-height: 1.12; letter-spacing: -0.03em; }
+    p { color: var(--muted); }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section-soft { background: linear-gradient(to bottom, #ffffff 0%, #f1f7ff 100%); }
+    .section-white { background: #ffffff; }
+    .label { color: var(--blue); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .title { font-size: clamp(30px, 4vw, 50px); margin-bottom: 16px; font-weight: 850; }
+    .sub { font-size: 17px; max-width: 660px; color: var(--muted); line-height: 1.7; }
+    .center { text-align: center; }
+    .center .sub { margin-left: auto; margin-right: auto; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 9px;
+      font-size: 15px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-blue { background: var(--blue); color: #fff; box-shadow: 0 10px 26px rgba(37,99,235,.24); }
+    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 14px 34px rgba(37,99,235,.34); }
+    .btn-ghost { background: #fff; color: var(--fg); border: 1px solid var(--border-md); }
+    .btn-ghost:hover { background: var(--card-2); border-color: rgba(15,23,42,.25); }
 
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: 62px;
-      background: rgba(255,255,255,0.88);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 64px;
+      background: rgba(255,255,255,.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      box-shadow: 0 1px 0 rgba(15,23,42,0.04);
+      box-shadow: 0 1px 0 rgba(15,23,42,.04);
     }
-    .nav-inner  { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-    .nav-logo   { font-size: 18px; font-weight: 800; }
+
+    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 18px; font-weight: 900; }
     .nav-logo span { color: var(--blue); }
-    .nav-links  { display: flex; gap: 2px; }
-    .nav-links a { color: var(--fg-muted); font-size: 14px; font-weight: 600; padding: 7px 13px; border-radius: 6px; transition: all 0.15s; }
-    .nav-links a:hover { color: var(--fg); background: var(--bg-card2); }
-    .nav-right  { display: flex; align-items: center; gap: 12px; }
-    .nav-phone  { color: var(--fg-dim); font-size: 13px; font-weight: 600; }
+    .nav-links { display: flex; gap: 2px; }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 700; padding: 8px 12px; border-radius: 7px; transition: all .15s; }
+    .nav-links a:hover { color: var(--fg); background: var(--card-2); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-phone { color: var(--dim); font-size: 13px; font-weight: 700; }
     .nav-phone:hover { color: var(--fg); }
-    .nav-btn    { padding: 9px 18px; font-size: 14px; border-radius: 7px; }
-    .hamburger  { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
-    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--fg-muted); border-radius: 2px; transition: all 0.3s; }
+    .nav-btn { padding: 9px 18px; font-size: 14px; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--muted); border-radius: 2px; }
 
     .mob-menu {
-      display: none; position: fixed;
-      top: 62px; left: 0; right: 0;
-      background: rgba(255,255,255,0.98);
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(255,255,255,.98);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      z-index: 99; padding: 8px 24px 20px;
+      z-index: 99;
+      padding: 8px 24px 20px;
       flex-direction: column;
-      box-shadow: 0 16px 40px rgba(15,23,42,0.10);
+      box-shadow: 0 16px 40px rgba(15,23,42,.10);
     }
+
     .mob-menu.open { display: flex; }
-    .mob-menu a { color: var(--fg-muted); font-size: 15px; font-weight: 600; padding: 14px 0; border-bottom: 1px solid var(--border); transition: color 0.15s; }
+    .mob-menu a { color: var(--muted); font-size: 15px; font-weight: 700; padding: 14px 0; border-bottom: 1px solid var(--border); }
     .mob-menu a:last-child { border: none; }
-    .mob-menu a:hover { color: var(--fg); }
 
     .hero {
       min-height: 100vh;
-      display: flex; align-items: center;
-      padding-top: 62px;
+      display: flex;
+      align-items: center;
+      padding-top: 64px;
       background:
-        radial-gradient(circle at top, rgba(37,99,235,0.12), transparent 42%),
+        radial-gradient(circle at top, rgba(37,99,235,.13), transparent 42%),
         linear-gradient(to bottom, #ffffff 0%, #f3f8ff 100%);
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
+
     .hero::before {
-      content: ''; position: absolute; inset: 0; pointer-events: none;
-      background-image: radial-gradient(circle, rgba(37,99,235,0.10) 1px, transparent 1px);
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(circle, rgba(37,99,235,.10) 1px, transparent 1px);
       background-size: 30px 30px;
     }
-    .hero-inner  { text-align: center; max-width: 820px; margin: 0 auto; padding: 90px 0 64px; position: relative; z-index: 1; }
-    .hero-badge  { margin-bottom: 28px; }
-    .hero h1     { font-size: clamp(38px,5.5vw,68px); font-weight: 800; letter-spacing: -2.5px; margin-bottom: 22px; }
+
+    .hero-inner { text-align: center; max-width: 930px; margin: 0 auto; padding: 90px 0 64px; position: relative; z-index: 1; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--blue-soft);
+      border: 1px solid var(--blue-ring);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      padding: 6px 15px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+    }
+
     .hero h1 .grad {
       background: linear-gradient(135deg, #0f172a 20%, #2563eb 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .hero-sub  { color: var(--fg-muted); font-size: 18px; max-width: 560px; margin: 0 auto 36px; line-height: 1.7; }
+
+    .hero-sub { color: var(--muted); font-size: 18px; max-width: 720px; margin: 0 auto 36px; line-height: 1.75; }
     .hero-ctas { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
-    .hero-fine { color: var(--fg-dim); font-size: 12.5px; }
+    .fine { color: var(--dim); font-size: 12.5px; }
 
-    .stats-bar  { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 60px; box-shadow: 0 16px 40px rgba(15,23,42,0.08); }
-    .stat       { background: var(--bg-card); padding: 28px 20px; text-align: center; }
-    .stat-val   { font-size: 34px; font-weight: 800; color: var(--blue); letter-spacing: -1.5px; line-height: 1; }
-    .stat-lbl   { color: var(--fg-muted); font-size: 12.5px; font-weight: 600; margin-top: 6px; }
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 62px;
+      box-shadow: var(--shadow);
+    }
 
-    .logos     { padding: 36px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: #ffffff; }
-    .logos-lbl { text-align: center; color: var(--fg-dim); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; margin-bottom: 20px; }
-    .logos-row { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .logo-chip { background: var(--bg-card); border: 1px solid var(--border); color: var(--fg-dim); font-size: 13px; font-weight: 700; padding: 8px 20px; border-radius: 6px; box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 10px 30px rgba(15,23,42,0.04); }
+    .stat { background: var(--card); padding: 28px 20px; text-align: center; }
+    .stat-val { font-size: 32px; font-weight: 900; color: var(--blue); letter-spacing: -1.5px; line-height: 1; }
+    .stat-lbl { color: var(--muted); font-size: 12.5px; font-weight: 700; margin-top: 8px; }
 
-    .prob-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 52px; }
-    .prob-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px; position: relative; overflow: hidden; box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 10px 30px rgba(15,23,42,0.06); }
-    .prob-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--red), var(--orange)); }
-    .prob-card h3 { font-size: 18px; margin: 14px 0 10px; }
-    .prob-card p  { color: var(--fg-muted); font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
-    .cost-tag { display: inline-block; background: rgba(220,38,38,0.08); border: 1px solid rgba(220,38,38,0.18); color: #b91c1c; font-size: 12.5px; font-weight: 700; padding: 6px 12px; border-radius: 7px; }
+    .trust-row {
+      padding: 34px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #ffffff;
+    }
 
-    .solution { background: linear-gradient(to bottom, #ffffff 0%, #f1f7ff 100%); }
-    .sol-grid  { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 52px; }
-    .sol-card  { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: border-color 0.2s, transform 0.2s; box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 10px 30px rgba(15,23,42,0.06); }
-    .sol-card:hover { border-color: var(--blue-ring); transform: translateY(-2px); }
-    .sol-head  { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
-    .sol-icon  { width: 44px; height: 44px; flex-shrink: 0; border-radius: 10px; background: rgba(37,99,235,0.10); border: 1px solid rgba(37,99,235,0.20); display: flex; align-items: center; justify-content: center; font-size: 20px; }
-    .sol-card h3   { font-size: 18px; margin-bottom: 3px; }
-    .sol-tag  { color: var(--blue); font-size: 11.5px; font-weight: 700; }
-    .sol-card p    { color: var(--fg-muted); font-size: 14px; line-height: 1.7; }
+    .trust-label { text-align: center; color: var(--dim); font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.8px; margin-bottom: 20px; }
+    .chips { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .chip { background: var(--card); border: 1px solid var(--border); color: var(--dim); font-size: 13px; font-weight: 800; padding: 8px 18px; border-radius: 8px; box-shadow: 0 1px 2px rgba(15,23,42,.04); }
 
-    .steps    { display: grid; grid-template-columns: repeat(2,1fr); gap: 36px; margin-top: 52px; }
-    .step     { display: flex; gap: 20px; align-items: flex-start; }
-    .step-num { width: 46px; height: 46px; flex-shrink: 0; border-radius: 11px; background: linear-gradient(135deg, var(--blue), #8b5cf6); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #fff; box-shadow: 0 12px 26px rgba(37,99,235,0.20); }
-    .step h3  { font-size: 17px; margin-bottom: 8px; }
-    .step p   { color: var(--fg-muted); font-size: 14px; line-height: 1.7; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 52px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 52px; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red), var(--orange));
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 11px;
+      background: var(--blue-soft);
+      border: 1px solid var(--blue-ring);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 { font-size: 19px; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: 14.5px; line-height: 1.75; }
+    .tag { display: inline-block; margin-top: 18px; background: rgba(220,38,38,.08); border: 1px solid rgba(220,38,38,.18); color: #b91c1c; font-size: 12.5px; font-weight: 800; padding: 6px 12px; border-radius: 8px; }
+    .blue-tag { color: var(--blue); font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; }
+
+    .steps { display: grid; grid-template-columns: repeat(2,1fr); gap: 34px; margin-top: 52px; }
+    .step { display: flex; gap: 18px; align-items: flex-start; }
+    .step-num {
+      width: 46px; height: 46px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), #8b5cf6);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(37,99,235,.20);
+    }
+    .step h3 { font-size: 18px; margin-bottom: 8px; }
+    .step p { font-size: 14.5px; line-height: 1.75; }
 
     .pricing-wrap { background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%); }
-    .tog-wrap  { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 44px; }
-    .tog-lbl   { font-size: 14px; font-weight: 600; color: var(--fg-muted); transition: color 0.2s; }
-    .tog-lbl.on { color: var(--fg); }
-    .tog-sw    { position: relative; width: 46px; height: 25px; }
-    .tog-sw input { opacity: 0; width: 0; height: 0; }
-    .tog-sl    { position: absolute; inset: 0; background: var(--blue); border-radius: 25px; cursor: pointer; transition: 0.25s; box-shadow: inset 0 1px 2px rgba(0,0,0,0.10); }
-    .tog-sl::before { content: ''; position: absolute; width: 19px; height: 19px; background: #fff; border-radius: 50%; top: 3px; left: 3px; transition: 0.25s; box-shadow: 0 1px 3px rgba(15,23,42,0.18); }
-    .tog-sw input:checked + .tog-sl::before { transform: translateX(21px); }
-    .save-pill { background: rgba(22,163,74,0.10); border: 1px solid rgba(22,163,74,0.20); color: var(--green); font-size: 11.5px; font-weight: 800; padding: 3px 9px; border-radius: 20px; }
+    .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 52px; }
 
-    .price-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
-    .pcard      { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s; box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 14px 36px rgba(15,23,42,0.08); }
-    .pcard:hover { transform: translateY(-3px); border-color: rgba(37,99,235,0.22); }
-    .pcard.popular  { border-color: rgba(37,99,235,0.45); background: linear-gradient(160deg, rgba(37,99,235,0.07), var(--bg-card) 60%); }
-    .pcard.popular::after  { content: 'Most Popular'; position: absolute; top: 0; right: 20px; background: var(--blue); color: #fff; font-size: 10.5px; font-weight: 800; padding: 4px 10px; border-radius: 0 0 7px 7px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .pcard.founder  { border-color: rgba(234,88,12,0.35); background: linear-gradient(160deg, rgba(234,88,12,0.06), var(--bg-card) 60%); }
-    .pcard.founder::after  { content: 'FIRST 9 ONLY'; position: absolute; top: 0; right: 20px; background: var(--orange); color: #fff; font-size: 10.5px; font-weight: 800; padding: 4px 10px; border-radius: 0 0 7px 7px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .pc-name    { font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: var(--fg-muted); margin-bottom: 14px; }
-    .pc-amt     { font-size: 42px; font-weight: 800; letter-spacing: -2px; }
-    .pc-per     { font-size: 14px; color: var(--fg-muted); font-weight: 500; }
-    .pc-commit  { color: var(--fg-dim); font-size: 11.5px; margin-bottom: 6px; }
-    .pc-tag     { color: var(--fg-muted); font-size: 13px; line-height: 1.5; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
-    .slots      { background: rgba(234,88,12,0.08); border: 1px solid rgba(234,88,12,0.22); color: var(--orange); font-size: 12px; font-weight: 700; padding: 6px 11px; border-radius: 7px; display: flex; align-items: center; gap: 5px; margin-bottom: 16px; }
-    .pc-feats   { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; flex-grow: 1; }
-    .pc-feats li { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; color: var(--fg-muted); }
+    .pcard {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: all .2s;
+      box-shadow: var(--shadow);
+    }
+
+    .pcard:hover { transform: translateY(-3px); border-color: rgba(37,99,235,.24); }
+    .pcard.popular { border-color: rgba(37,99,235,.48); background: linear-gradient(160deg, rgba(37,99,235,.07), var(--card) 60%); }
+    .pcard.popular::after {
+      content: 'Most Popular';
+      position: absolute;
+      top: 0; right: 20px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 10.5px;
+      font-weight: 900;
+      padding: 4px 10px;
+      border-radius: 0 0 7px 7px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .pc-name { font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 14px; }
+    .pc-amt { font-size: 44px; font-weight: 900; letter-spacing: -2px; }
+    .pc-per { font-size: 14px; color: var(--muted); font-weight: 600; }
+    .pc-commit { color: var(--dim); font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+    .pc-tag { color: var(--muted); font-size: 13.5px; line-height: 1.55; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .pc-feats { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; flex-grow: 1; }
+    .pc-feats li { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; color: var(--muted); }
     .pc-feats li::before { content: '✓'; color: var(--green); font-weight: 900; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
-    .pc-btn     { display: flex; align-items: center; justify-content: center; padding: 12px; border-radius: 9px; font-size: 14.5px; font-weight: 700; border: none; cursor: pointer; transition: all 0.2s; margin-top: auto; }
-    .pc-btn.blue   { background: var(--blue); color: #fff; box-shadow: 0 8px 22px rgba(37,99,235,0.22); }
-    .pc-btn.blue:hover   { background: var(--blue-dark); box-shadow: 0 10px 26px rgba(37,99,235,0.32); }
-    .pc-btn.ghost  { background: #fff; color: var(--fg); border: 1px solid var(--border-md); }
-    .pc-btn.ghost:hover  { border-color: rgba(15,23,42,0.25); background: var(--bg-card2); }
-    .pc-btn.orange { background: var(--orange); color: #fff; box-shadow: 0 8px 22px rgba(234,88,12,0.20); }
-    .pc-btn.orange:hover { background: #c2410c; box-shadow: 0 10px 26px rgba(234,88,12,0.30); }
+    .pc-btn { display: flex; align-items: center; justify-content: center; padding: 12px; border-radius: 10px; font-size: 14.5px; font-weight: 800; border: none; cursor: pointer; transition: all .2s; margin-top: auto; }
+    .pc-btn.blue { background: var(--blue); color: #fff; box-shadow: 0 8px 22px rgba(37,99,235,.22); }
+    .pc-btn.blue:hover { background: var(--blue-dark); box-shadow: 0 10px 26px rgba(37,99,235,.32); }
+    .pc-btn.ghost { background: #fff; color: var(--fg); border: 1px solid var(--border-md); }
+    .pc-btn.ghost:hover { border-color: rgba(15,23,42,.25); background: var(--card-2); }
 
-    .faq-wrap  { max-width: 700px; margin: 52px auto 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 10px 30px rgba(15,23,42,0.06); }
-    .faq-item  { border-bottom: 1px solid var(--border); }
+    .roi-band {
+      margin-top: 52px;
+      padding: 34px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .mini-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .mini-list li { color: var(--muted); font-size: 14px; display: flex; gap: 9px; }
+    .mini-list li::before { content: '•'; color: var(--blue); font-weight: 900; }
+
+    .faq-wrap { max-width: 760px; margin: 52px auto 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+    .faq-item { border-bottom: 1px solid var(--border); }
     .faq-item:last-child { border-bottom: none; }
-    .faq-q     { width: 100%; background: var(--bg-card); border: none; color: var(--fg); font-size: 15px; font-weight: 700; padding: 21px 26px; text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 14px; cursor: pointer; transition: background 0.15s; }
-    .faq-q:hover { background: var(--bg-card2); }
-    .faq-ico   { width: 24px; height: 24px; flex-shrink: 0; border-radius: 50%; background: rgba(37,99,235,0.10); border: 1px solid rgba(37,99,235,0.20); display: flex; align-items: center; justify-content: center; color: var(--blue); font-size: 17px; transition: transform 0.28s; }
+    .faq-q {
+      width: 100%;
+      background: var(--card);
+      border: none;
+      color: var(--fg);
+      font-size: 15px;
+      font-weight: 800;
+      padding: 21px 26px;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+    }
+    .faq-q:hover { background: var(--card-2); }
+    .faq-ico { width: 24px; height: 24px; flex-shrink: 0; border-radius: 50%; background: var(--blue-soft); border: 1px solid var(--blue-ring); display: flex; align-items: center; justify-content: center; color: var(--blue); font-size: 17px; transition: transform .28s; }
     .faq-item.open .faq-ico { transform: rotate(45deg); }
-    .faq-a     { background: var(--bg-card); max-height: 0; overflow: hidden; transition: max-height 0.32s ease; }
-    .faq-a-in  { padding: 0 26px 22px; color: var(--fg-muted); font-size: 14.5px; line-height: 1.75; }
-    .faq-item.open .faq-a { max-height: 320px; }
+    .faq-a { background: var(--card); max-height: 0; overflow: hidden; transition: max-height .32s ease; }
+    .faq-a-in { padding: 0 26px 22px; color: var(--muted); font-size: 14.5px; line-height: 1.75; }
+    .faq-item.open .faq-a { max-height: 360px; }
 
-    .cta-sec   { padding: 96px 0; text-align: center; background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); }
-    .cta-sec h2 { font-size: clamp(28px,3.8vw,50px); max-width: 640px; margin: 0 auto 18px; }
-    .cta-sec p  { color: var(--fg-muted); font-size: 17px; max-width: 500px; margin: 0 auto 34px; line-height: 1.65; }
-    .cta-phone { color: var(--fg-dim); font-size: 14px; margin-top: 18px; }
-    .cta-phone a { color: var(--fg-muted); }
-    .cta-phone a:hover { color: var(--fg); }
-    .cta-note  { color: var(--fg-dim); font-size: 12.5px; margin-top: 8px; }
+    .cta-sec { padding: 96px 0; text-align: center; background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); }
+    .cta-sec h2 { font-size: clamp(30px, 4vw, 52px); max-width: 760px; margin: 0 auto 18px; font-weight: 900; }
+    .cta-sec p { max-width: 620px; margin: 0 auto 34px; font-size: 17px; line-height: 1.7; }
+    .cta-phone { color: var(--dim); font-size: 14px; margin-top: 18px; }
+    .cta-note { color: var(--dim); font-size: 12.5px; margin-top: 8px; }
 
     footer { background: #ffffff; border-top: 1px solid var(--border); padding: 40px 0; }
-    .foot-in   { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-    .foot-logo { font-size: 16px; font-weight: 800; }
+    .foot-in { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .foot-logo { font-size: 16px; font-weight: 900; }
     .foot-logo span { color: var(--blue); }
-    .foot-links { display: flex; gap: 24px; flex-wrap: wrap; }
-    .foot-links a { color: var(--fg-dim); font-size: 13.5px; transition: color 0.15s; }
+    .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .foot-links a { color: var(--dim); font-size: 13.5px; font-weight: 600; }
     .foot-links a:hover { color: var(--fg); }
-    .foot-copy { color: var(--fg-dim); font-size: 12.5px; }
+    .foot-copy { color: var(--dim); font-size: 12.5px; }
 
-    .r  { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .r { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
     .r.in { opacity: 1; transform: none; }
 
     @media (max-width: 1024px) {
-      .price-grid { grid-template-columns: repeat(2,1fr); }
+      .price-grid, .grid-3 { grid-template-columns: repeat(2,1fr); }
     }
+
     @media (max-width: 768px) {
       .nav-links, .nav-right { display: none; }
       .hamburger { display: flex; }
-      .stats-bar { grid-template-columns: repeat(2,1fr); }
-      .prob-grid, .sol-grid, .steps { grid-template-columns: 1fr; }
-      .price-grid { grid-template-columns: 1fr; }
+      .stats-bar, .grid-3, .grid-2, .steps, .price-grid, .split { grid-template-columns: 1fr; }
+      .hero h1 { letter-spacing: -1.8px; }
+      .section { padding: 68px 0; }
       .foot-in { flex-direction: column; text-align: center; }
       .foot-links { justify-content: center; }
-      .section { padding: 64px 0; }
-    }
-    @media (max-width: 480px) {
-      .stats-bar { grid-template-columns: repeat(2,1fr); }
-      .hero h1 { letter-spacing: -1.5px; }
     }
   </style>
 </head>
@@ -237,17 +384,18 @@
 
 <nav>
   <div class="container nav-inner">
-    <a href="#" class="nav-logo">Nexus <span>by SpotOn</span></a>
+    <a href="#" class="nav-logo">SpotOn <span>Nexus</span></a>
     <div class="nav-links">
       <a href="#problem">Problem</a>
-      <a href="#solution">Solution</a>
+      <a href="#infrastructure">Infrastructure</a>
       <a href="#how">How It Works</a>
+      <a href="#roi">ROI</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </div>
     <div class="nav-right">
       <a href="tel:8447231900" class="nav-phone">(844) 723-1900</a>
-      <a href="#pricing" class="btn btn-blue nav-btn">Book a Call</a>
+      <a href="#pricing" class="btn btn-blue nav-btn">Book a Demo</a>
     </div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -256,45 +404,46 @@
 </nav>
 
 <div class="mob-menu" id="mobMenu">
-  <a href="#problem"  onclick="closeMob()">Problem</a>
-  <a href="#solution" onclick="closeMob()">Solution</a>
-  <a href="#how"      onclick="closeMob()">How It Works</a>
-  <a href="#pricing"  onclick="closeMob()">Pricing</a>
-  <a href="#faq"      onclick="closeMob()">FAQ</a>
+  <a href="#problem" onclick="closeMob()">Problem</a>
+  <a href="#infrastructure" onclick="closeMob()">Infrastructure</a>
+  <a href="#how" onclick="closeMob()">How It Works</a>
+  <a href="#roi" onclick="closeMob()">ROI</a>
+  <a href="#pricing" onclick="closeMob()">Pricing</a>
+  <a href="#faq" onclick="closeMob()">FAQ</a>
   <a href="tel:8447231900">(844) 723-1900</a>
-  <a href="#pricing" onclick="closeMob()" style="color:var(--blue);font-weight:700;">Book a Call</a>
+  <a href="#pricing" onclick="closeMob()" style="color:var(--blue);font-weight:900;">Book a Demo</a>
 </div>
 
-<section class="hero">
+<section class="hero" id="home">
   <div class="container">
     <div class="hero-inner">
-      <div class="hero-badge r"><span class="badge">&#10022; Trusted by 150+ agencies &middot; 1.5M+ pages published</span></div>
-      <h1 class="r">Scale local SEO<br><span class="grad">without scaling headcount</span></h1>
-      <p class="hero-sub r">Generate thousands of optimized local SEO pages for your agency clients. Manage quality, indexing, and reporting from one dashboard &mdash; no extra hires needed.</p>
+      <div class="badge r">Managed local search production infrastructure</div>
+      <h1 class="r">Local search infrastructure<br><span class="grad">built for profitable agency growth</span></h1>
+      <p class="hero-sub r">SpotOn Nexus helps agencies scale local search visibility delivery without scaling fulfillment complexity at the same pace. We build, publish, organize, and maintain the structured visibility coverage, internal links, publishing systems, and reporting layers behind local search growth.</p>
       <div class="hero-ctas r">
-        <a href="#pricing" class="btn btn-blue" style="font-size:16px;padding:14px 30px;">Book a Strategy Call &rarr;</a>
-        <a href="#pricing" class="btn btn-ghost">See Pricing</a>
+        <a href="#how" class="btn btn-blue" style="font-size:16px;padding:14px 30px;">See How Nexus Works &rarr;</a>
+        <a href="#pricing" class="btn btn-ghost">Request a Page Strategy Review</a>
       </div>
-      <p class="hero-fine r">No contract required on monthly plans &middot; Setup call included</p>
+      <p class="fine r">You keep the client relationship. We handle the operational production layer.</p>
       <div class="stats-bar r">
-        <div class="stat"><div class="stat-val">150+</div><div class="stat-lbl">Agencies</div></div>
-        <div class="stat"><div class="stat-val">1.5M+</div><div class="stat-lbl">Pages Published</div></div>
-        <div class="stat"><div class="stat-val">98K+</div><div class="stat-lbl">Max Pages Per Client Site</div></div>
-        <div class="stat"><div class="stat-val">$0</div><div class="stat-lbl">Extra Headcount Needed</div></div>
+        <div class="stat"><div class="stat-val">More</div><div class="stat-lbl">Visibility Coverage</div></div>
+        <div class="stat"><div class="stat-val">Lower</div><div class="stat-lbl">Production Overhead</div></div>
+        <div class="stat"><div class="stat-val">Better</div><div class="stat-lbl">Client Retention Support</div></div>
+        <div class="stat"><div class="stat-val">Higher</div><div class="stat-lbl">Agency Margin Potential</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="logos">
+<div class="trust-row">
   <div class="container">
-    <p class="logos-lbl">Agencies using Nexus to deliver at scale</p>
-    <div class="logos-row">
-      <div class="logo-chip">Summit Digital</div>
-      <div class="logo-chip">Rank Forge Agency</div>
-      <div class="logo-chip">LocalSEO Co.</div>
-      <div class="logo-chip">PageScale HQ</div>
-      <div class="logo-chip">ClimbFirst Media</div>
+    <p class="trust-label">Built for agencies and service businesses that need scalable local visibility operations</p>
+    <div class="chips">
+      <div class="chip">Marketing Agencies</div>
+      <div class="chip">SEO Agencies</div>
+      <div class="chip">Website Agencies</div>
+      <div class="chip">Lead Generation Companies</div>
+      <div class="chip">Multi-Location Brands</div>
     </div>
   </div>
 </div>
@@ -302,109 +451,214 @@
 <section class="section" id="problem">
   <div class="container">
     <div class="r">
-      <p class="sec-label">The problem</p>
-      <h2 class="sec-title">The agency SEO trap</h2>
-      <p class="sec-sub">Most agencies hit a wall. The more SEO clients you win, the more the margins shrink.</p>
+      <p class="label">The problem</p>
+      <h2 class="title">Most agencies can sell local visibility faster than they can produce it</h2>
+      <p class="sub">Agencies do not usually lose money because they lack SEO theory. They lose money because local search production is hard to scale profitably.</p>
     </div>
-    <div class="prob-grid">
-      <div class="prob-card r">
-        <div style="font-size:28px;">&#128201;</div>
-        <h3>Selling SEO but can't scale</h3>
-        <p>You close the client, then realize it takes 40 hours to build their location pages. You're trading time for revenue and can't grow.</p>
-        <span class="cost-tag">Cost: ~$3,000 in labor per client setup</span>
+    <div class="grid-3">
+      <div class="card problem-card r">
+        <div class="card-icon">✍️</div>
+        <h3>Production labor piles up</h3>
+        <p>Service-area pages, city pages, updates, publishing, QA, and reporting all take time your team rarely has.</p>
+        <span class="tag">Cost: More fulfillment hours per client</span>
       </div>
-      <div class="prob-card r">
-        <div style="font-size:28px;">&#128101;</div>
-        <h3>Hiring more people, margins drop</h3>
-        <p>Every new client means another writer, another VA, another project manager. Your profit margin disappears as headcount grows.</p>
-        <span class="cost-tag">Cost: $50K&ndash;$80K per year per hire</span>
+      <div class="card problem-card r">
+        <div class="card-icon">🔗</div>
+        <h3>Search structure gets missed</h3>
+        <p>Internal linking, crawl depth, orphan recovery, and publishing organization often fall through the cracks.</p>
+        <span class="tag">Cost: Weak coverage and hard-to-explain work</span>
       </div>
-      <div class="prob-card r">
-        <div style="font-size:28px;">&#128196;</div>
-        <h3>Template pages that don't rank</h3>
-        <p>Cheap page generators publish thin, duplicate content. Google ignores them &mdash; or worse, penalizes the whole domain.</p>
-        <span class="cost-tag">Cost: Client churn + reputation damage</span>
+      <div class="card problem-card r">
+        <div class="card-icon">👥</div>
+        <h3>Scaling usually means hiring</h3>
+        <p>More clients often means more writers, developers, SEO coordinators, link audits, QA, and reporting work.</p>
+        <span class="tag">Cost: Margin pressure and bottlenecks</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section solution" id="solution">
+<section class="section section-soft" id="infrastructure">
   <div class="container">
     <div class="r">
-      <p class="sec-label">The solution</p>
-      <h2 class="sec-title">Nexus: Infrastructure to deliver at scale</h2>
-      <p class="sec-sub">Write your content once. Nexus generates, scores, and publishes thousands of pages automatically.</p>
+      <p class="label">What Nexus does</p>
+      <h2 class="title">Managed local search infrastructure</h2>
+      <p class="sub">Nexus builds and maintains the structured visibility layer agencies need to expand local search coverage without adding production staff.</p>
     </div>
-    <div class="sol-grid">
-      <div class="sol-card r">
-        <div class="sol-head">
-          <div class="sol-icon">&#9889;</div>
-          <div><h3>Generate pages instantly</h3><span class="sol-tag">600&times; faster than manual</span></div>
-        </div>
-        <p>Write once, publish to 100 cities. Set up a service content bank and Nexus generates every city variation &mdash; quality-controlled and ready to index.</p>
+
+    <div class="grid-2">
+      <div class="card r">
+        <div class="card-icon">🏙️</div>
+        <h3>Structured visibility coverage</h3>
+        <p>Nexus supports the local visibility layer behind a client’s market coverage: state pages, city pages, city + service pages, industry + city pages, and problem-intent pages.</p>
+        <p class="blue-tag" style="margin-top:14px;">Visibility coverage, not page dumping</p>
       </div>
-      <div class="sol-card r">
-        <div class="sol-head">
-          <div class="sol-icon">&#127919;</div>
-          <div><h3>Quality controls built in</h3><span class="sol-tag">100-point scoring engine</span></div>
-        </div>
-        <p>Every page is scored on a 100-point scale. Only pages above your threshold get promoted to Google. No thin content at scale.</p>
+      <div class="card r">
+        <div class="card-icon">🔗</div>
+        <h3>Internal search structure</h3>
+        <p>Pages are organized around service relationships, location relationships, and supporting content paths so users and search engines can move through the structure.</p>
+        <p class="blue-tag" style="margin-top:14px;">Crawl paths and user paths</p>
       </div>
-      <div class="sol-card r">
-        <div class="sol-head">
-          <div class="sol-icon">&#128260;</div>
-          <div><h3>Automated everything</h3><span class="sol-tag">Zero manual ops</span></div>
-        </div>
-        <p>Sitemap regeneration, Google Indexing API submission, internal linking, and weekly client reports &mdash; all run automatically without manual work.</p>
+      <div class="card r">
+        <div class="card-icon">🛠️</div>
+        <h3>Managed publishing system</h3>
+        <p>We configure the client profile, publishing subdomain, calls to action, branding, and page structure so the agency does not need to manage production manually.</p>
+        <p class="blue-tag" style="margin-top:14px;">Built, published, and maintained</p>
       </div>
-      <div class="sol-card r">
-        <div class="sol-head">
-          <div class="sol-icon">&#127991;&#65039;</div>
-          <div><h3>White-label multi-tenant</h3><span class="sol-tag">Your brand, your clients</span></div>
-        </div>
-        <p>Each client gets their own account and branded dashboard. You run all clients from one admin panel &mdash; they see only their own data.</p>
+      <div class="card r">
+        <div class="card-icon">📊</div>
+        <h3>Reporting and page health</h3>
+        <p>Nexus helps track published pages, forms, clicks, weak pages, orphan pages, and page health so agencies can explain the work clearly.</p>
+        <p class="blue-tag" style="margin-top:14px;">Client retention support</p>
       </div>
-    </div>
-    <div class="r" style="text-align:center;margin-top:48px;">
-      <a href="#pricing" class="btn btn-blue" style="font-size:16px;padding:14px 30px;">Book a Strategy Call &rarr;</a>
     </div>
   </div>
 </section>
 
 <section class="section" id="how">
   <div class="container">
-    <div class="r" style="text-align:center;">
-      <p class="sec-label">How it works</p>
-      <h2 class="sec-title">From setup to ranking in 4 steps</h2>
+    <div class="center r">
+      <p class="label">How it works</p>
+      <h2 class="title">From client setup to managed visibility infrastructure</h2>
+      <p class="sub">Nexus is built around operational delivery, not another dashboard your team has to babysit.</p>
     </div>
     <div class="steps">
       <div class="step r">
         <div class="step-num">1</div>
         <div>
-          <h3>Upload client info &amp; locations</h3>
-          <p>Add the client's brand, services, and target cities. Nexus supports bulk location uploads with tier classification.</p>
+          <h3>We configure the client profile</h3>
+          <p>Brand name, website URL, phone number, service focus, locations, calls to action, and branded publishing subdomain.</p>
         </div>
       </div>
       <div class="step r">
         <div class="step-num">2</div>
         <div>
-          <h3>Nexus generates optimized pages</h3>
-          <p>The content engine uses your variation banks and blueprints to generate unique, structured pages for every service&ndash;city combination.</p>
+          <h3>We map the visibility structure</h3>
+          <p>Services, cities, states, industry targets, problem-intent opportunities, and supporting local search relationships.</p>
         </div>
       </div>
       <div class="step r">
         <div class="step-num">3</div>
         <div>
-          <h3>Pages score, tier, and publish automatically</h3>
-          <p>Every page gets scored. High-quality pages are promoted to Tier 1 and submitted to Google Indexing API. Lower-scored pages stay live but quiet.</p>
+          <h3>We publish the infrastructure</h3>
+          <p>Pages are deployed on a branded subdomain and connected back to the client’s main brand, calls to action, and conversion paths.</p>
         </div>
       </div>
       <div class="step r">
         <div class="step-num">4</div>
         <div>
-          <h3>Weekly reports sent to clients</h3>
-          <p>Automated weekly summaries show page count, tier distribution, indexing status, and growth &mdash; ready to forward straight to the client.</p>
+          <h3>We organize internal links</h3>
+          <p>Pages connect to related services, cities, states, and supporting pages to improve crawl depth and user navigation.</p>
+        </div>
+      </div>
+      <div class="step r">
+        <div class="step-num">5</div>
+        <div>
+          <h3>We monitor and maintain</h3>
+          <p>Page health, orphan recovery, visibility coverage, forms, clicks, and reporting are monitored so the system stays organized.</p>
+        </div>
+      </div>
+      <div class="step r">
+        <div class="step-num">6</div>
+        <div>
+          <h3>You keep the client relationship</h3>
+          <p>Your agency owns the strategy, pricing, and communication. Nexus handles the production infrastructure layer behind the scenes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft" id="difference">
+  <div class="container">
+    <div class="r">
+      <p class="label">What makes Nexus different</p>
+      <h2 class="title">Built for structured local visibility — not mass spam publishing</h2>
+      <p class="sub">Nexus is not a bulk page dumping system. It is designed around organized publishing, branded page layers, internal linking, crawl structure, conversion paths, and long-term maintainability.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card r">
+        <div class="card-icon">🗺️</div>
+        <h3>Coverage structure</h3>
+        <p>The goal is broader local search coverage through organized visibility systems, not random pages.</p>
+      </div>
+      <div class="card r">
+        <div class="card-icon">🧭</div>
+        <h3>Crawl organization</h3>
+        <p>Pages are connected through service, location, and supporting content relationships instead of being left isolated.</p>
+      </div>
+      <div class="card r">
+        <div class="card-icon">🎯</div>
+        <h3>Conversion paths</h3>
+        <p>The infrastructure supports lead capture and client branding, not just search entry points.</p>
+      </div>
+      <div class="card r">
+        <div class="card-icon">🧰</div>
+        <h3>Ongoing maintenance</h3>
+        <p>Nexus is built to maintain the local visibility layer over time, including weak pages, orphan pages, and reporting visibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="roi">
+  <div class="container">
+    <div class="center r">
+      <p class="label">ROI</p>
+      <h2 class="title">The ROI is operational scale</h2>
+      <p class="sub">Most SEO platforms sell traffic, rankings, and reports. SpotOn Nexus sells search coverage infrastructure: visibility coverage, lead acquisition support, client retention, production efficiency, and margin expansion.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card r">
+        <div class="card-icon">💼</div>
+        <h3>Labor replacement ROI</h3>
+        <p>Instead of adding writers, publishers, SEO coordinators, internal-link managers, QA reviewers, and reporting staff, Nexus centralizes the local search production layer.</p>
+      </div>
+      <div class="card r">
+        <div class="card-icon">📍</div>
+        <h3>Search coverage ROI</h3>
+        <p>Most local businesses compete with only a handful of pages. Nexus helps agencies build structured search coverage across cities, services, and search intent categories.</p>
+      </div>
+      <div class="card r">
+        <div class="card-icon">🔁</div>
+        <h3>Retention ROI</h3>
+        <p>Clients stay longer when they can clearly see ongoing visibility expansion: published pages, internal links, coverage maps, lead forms, page health, and reporting.</p>
+      </div>
+      <div class="card r">
+        <div class="card-icon">📈</div>
+        <h3>Margin expansion ROI</h3>
+        <p>Nexus helps agencies increase local search delivery capacity without increasing operational complexity at the same pace.</p>
+      </div>
+    </div>
+
+    <div class="roi-band r">
+      <div class="center">
+        <h3 style="font-size:28px;margin-bottom:10px;">Nexus closes the production gap</h3>
+        <p class="sub" style="margin:0 auto;">Most agencies do not struggle to sell SEO. They struggle to fulfill it profitably. Nexus helps agencies scale local search production without scaling headcount at the same rate.</p>
+      </div>
+      <div class="split">
+        <div class="card" style="box-shadow:none;">
+          <h3 style="margin-bottom:14px;">Without Nexus</h3>
+          <ul class="mini-list">
+            <li>More SEO fulfillment hires</li>
+            <li>More publishing work</li>
+            <li>More internal linking tasks</li>
+            <li>More reporting labor</li>
+            <li>More operational bottlenecks</li>
+            <li>Slower deployment speed</li>
+          </ul>
+        </div>
+        <div class="card" style="box-shadow:none;">
+          <h3 style="margin-bottom:14px;">With Nexus</h3>
+          <ul class="mini-list">
+            <li>Managed visibility infrastructure</li>
+            <li>Centralized deployment systems</li>
+            <li>Organized internal linking</li>
+            <li>Faster market expansion</li>
+            <li>Reduced production overhead</li>
+            <li>Scalable fulfillment capacity</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -413,117 +667,126 @@
 
 <section class="section pricing-wrap" id="pricing">
   <div class="container">
-    <div class="r" style="text-align:center;">
-      <p class="sec-label">Pricing</p>
-      <h2 class="sec-title">Simple, transparent pricing</h2>
-      <p class="sec-sub" style="margin:0 auto 36px;">No per-page fees. No surprises. One monthly rate covers your client campaigns end to end.</p>
+    <div class="center r">
+      <p class="label">Pricing</p>
+      <h2 class="title">Simple infrastructure pricing for agencies</h2>
+      <p class="sub">SpotOn Nexus is priced around managed local search infrastructure and operational fulfillment — not software seats, AI credits, or page-generation fees.</p>
     </div>
-    <div class="tog-wrap r">
-      <span class="tog-lbl on" id="lbl-m">Monthly</span>
-      <label class="tog-sw">
-        <input type="checkbox" id="annualToggle" onchange="togglePricing()">
-        <span class="tog-sl"></span>
-      </label>
-      <span class="tog-lbl" id="lbl-a">Annual</span>
-      <span class="save-pill">Save 20%</span>
-    </div>
+
     <div class="price-grid r">
       <div class="pcard">
         <div class="pc-name">Local Launch</div>
-        <div style="margin-bottom:4px;"><span class="pc-amt" id="p1">$1,997</span><span class="pc-per">/mo</span></div>
-        <div class="pc-commit">6-month commitment</div>
-        <div class="pc-tag">Best for: Single-service businesses testing programmatic SEO</div>
+        <div style="margin-bottom:4px;"><span class="pc-amt">$1,250</span><span class="pc-per">/mo</span></div>
+        <div class="pc-commit">6-month minimum</div>
+        <div class="pc-tag">Best for agencies proving Nexus on one high-value local visibility client.</div>
         <ul class="pc-feats">
-          <li>1 client</li><li>5,000 pages</li><li>Auto-scoring &amp; tiering</li>
-          <li>Weekly reports</li><li>Google indexing</li>
-          <li>White-label dashboard</li><li>Email support</li>
+          <li>1 client deployment</li>
+          <li>Managed local search infrastructure</li>
+          <li>Service-area pages</li>
+          <li>City pages</li>
+          <li>State pages</li>
+          <li>Internal linking structure</li>
+          <li>Branded publishing subdomain</li>
+          <li>Lead capture forms</li>
+          <li>Visibility reporting</li>
+          <li>Page health monitoring</li>
+          <li>Ongoing maintenance</li>
+          <li>White-label delivery</li>
         </ul>
-        <a href="#" class="pc-btn ghost">Get Started</a>
+        <a href="#pricing" class="pc-btn ghost">See Launch Plan</a>
       </div>
-      <div class="pcard founder">
-        <div class="pc-name">Founding Agency</div>
-        <div style="margin-bottom:4px;"><span class="pc-amt" id="p2">$1,497</span><span class="pc-per">/mo per client</span></div>
-        <div class="pc-commit">Monthly only &middot; founders rate locked in forever</div>
-        <div class="pc-tag">Save $500/month. Lock in founding rate before price increase.</div>
-        <div class="slots">&#128293; 9 of 9 slots remaining</div>
-        <ul class="pc-feats">
-          <li>1&ndash;3 clients</li><li>15,000 pages per site</li>
-          <li>Auto-scoring &amp; tiering</li><li>Weekly reports</li>
-          <li>Google indexing</li><li>White-label dashboard</li>
-          <li>Email support</li><li>Case study &amp; testimonial rights</li>
-        </ul>
-        <a href="#" class="pc-btn orange">Claim Offer &rarr;</a>
-      </div>
+
       <div class="pcard popular">
-        <div class="pc-name">Growth Bundle</div>
-        <div style="margin-bottom:4px;"><span class="pc-amt" id="p3">$3,000</span><span class="pc-per">/mo</span></div>
-        <div class="pc-commit">6-month commitment</div>
-        <div class="pc-tag">Best for: Agencies with 3 clients. Most popular.</div>
+        <div class="pc-name">Agency Growth</div>
+        <div style="margin-bottom:4px;"><span class="pc-amt">$3,000</span><span class="pc-per">/mo</span></div>
+        <div class="pc-commit">6-month minimum</div>
+        <div class="pc-tag">Best for agencies using Nexus as the operational infrastructure layer for multiple clients.</div>
         <ul class="pc-feats">
-          <li>3 clients</li><li>25,000 pages per site (75K total)</li>
-          <li>Auto-scoring &amp; tiering</li><li>Weekly reports</li>
-          <li>Google indexing</li><li>White-label dashboard</li>
-          <li>Priority support</li>
+          <li>Up to 3 client deployments</li>
+          <li>Full local search infrastructure management</li>
+          <li>Service-area + city visibility systems</li>
+          <li>Internal linking management</li>
+          <li>Crawl structure organization</li>
+          <li>Orphan page recovery</li>
+          <li>Branded reporting layers</li>
+          <li>Lead tracking support</li>
+          <li>White-label fulfillment</li>
+          <li>Priority operational support</li>
         </ul>
-        <a href="#" class="pc-btn blue">Get Started &rarr;</a>
+        <a href="#pricing" class="pc-btn blue">Book a Strategy Call</a>
       </div>
+
       <div class="pcard">
         <div class="pc-name">Enterprise</div>
         <div style="margin-bottom:4px;">
-          <span style="font-size:15px;color:var(--fg-muted);font-weight:500;">Starting at</span><br>
-          <span class="pc-amt" id="p4">$5,000</span>
+          <span style="font-size:15px;color:var(--muted);font-weight:700;">Starting at</span><br>
+          <span class="pc-amt">$5,000</span><span class="pc-per">/mo</span>
         </div>
-        <div class="pc-commit">6-month commitment</div>
-        <div class="pc-tag">Best for: Agencies scaling aggressively</div>
+        <div class="pc-commit">Custom deployment</div>
+        <div class="pc-tag">Best for larger agencies, franchise-style operators, and multi-location visibility systems.</div>
         <ul class="pc-feats">
-          <li>4+ clients</li><li>100,000+ pages per site</li>
-          <li>All features included</li><li>Dedicated support</li>
-          <li>Custom integrations</li><li>SLA guarantee</li>
+          <li>4+ client deployments</li>
+          <li>Custom infrastructure architecture</li>
+          <li>Advanced internal linking systems</li>
+          <li>Multi-location deployment structures</li>
+          <li>Dedicated support lead</li>
+          <li>Reporting integrations</li>
+          <li>CRM/call-tracking integrations</li>
+          <li>SLA support options</li>
+          <li>Quarterly infrastructure reviews</li>
         </ul>
-        <a href="#" class="pc-btn ghost">Contact Sales</a>
+        <a href="#pricing" class="pc-btn ghost">Request Enterprise Review</a>
+      </div>
+    </div>
+
+    <div class="roi-band r">
+      <div class="center">
+        <h3 style="font-size:28px;margin-bottom:10px;">You keep the agency relationship</h3>
+        <p class="sub" style="margin:0 auto;">You control the pricing, strategy, and communication. SpotOn Nexus handles the operational infrastructure layer that helps your clients expand local search visibility without requiring your agency to expand fulfillment staff.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="faq">
+<section class="section section-white" id="faq">
   <div class="container">
-    <div class="r" style="text-align:center;">
-      <p class="sec-label">FAQ</p>
-      <h2 class="sec-title">Common questions</h2>
+    <div class="center r">
+      <p class="label">FAQ</p>
+      <h2 class="title">Common questions</h2>
     </div>
+
     <div class="faq-wrap r">
       <div class="faq-item">
-        <button class="faq-q" onclick="openFaq(this)">How many pages can I generate per site? <span class="faq-ico">+</span></button>
-        <div class="faq-a"><div class="faq-a-in">Depending on your plan, you can generate anywhere from 5,000 to 100,000+ pages per site. The Growth Bundle includes 25,000 pages per site across 3 clients (75K total). Enterprise plans have no hard cap.</div></div>
+        <button class="faq-q" onclick="openFaq(this)">What is SpotOn Nexus? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-in">SpotOn Nexus is a managed local search infrastructure system that helps agencies deploy structured visibility layers including service-area pages, city pages, internal linking systems, and branded publishing structures.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="openFaq(this)">Do I need my own API key? <span class="faq-ico">+</span></button>
-        <div class="faq-a"><div class="faq-a-in">No. Nexus handles all infrastructure including Google Indexing API access. Enterprise plans may require additional credentials for custom integrations.</div></div>
+        <button class="faq-q" onclick="openFaq(this)">Where are the pages published? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-in">Pages are usually published on a branded subdomain such as pages.clientdomain.com. The pages link back to the client’s main website and use the client’s branding, phone number, forms, and calls to action.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="openFaq(this)">How long until pages rank? <span class="faq-ico">+</span></button>
-        <div class="faq-a"><div class="faq-a-in">Most clients see indexing within 2&ndash;4 weeks and early ranking signals within 60&ndash;90 days. Results vary by domain authority, competition, and content quality.</div></div>
+        <button class="faq-q" onclick="openFaq(this)">Do clients need a new website? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-in">No. Nexus works alongside the client’s current website. The main website stays in place while Nexus powers the local visibility infrastructure layer.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="openFaq(this)">Can I white-label it for clients? <span class="faq-ico">+</span></button>
-        <div class="faq-a"><div class="faq-a-in">Yes. Every plan includes a white-label dashboard. Clients log in under your brand and see only their own data with no Nexus branding visible.</div></div>
+        <button class="faq-q" onclick="openFaq(this)">Is this for agencies or business owners? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-in">Both, but the main fit is agencies that want to offer local search page production without adding more writers, developers, SEO coordinators, or reporting staff.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="openFaq(this)">What's quality scoring? <span class="faq-ico">+</span></button>
-        <div class="faq-a"><div class="faq-a-in">Every generated page is evaluated on a 100-point scale: content uniqueness, keyword optimization, structured data, internal linking, and readability. Only pages meeting your threshold go to Google.</div></div>
+        <button class="faq-q" onclick="openFaq(this)">What kinds of pages can be supported? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-in">Nexus can support state pages, city pages, service-area pages, city + service pages, industry + city pages, and problem-intent pages as part of a structured local visibility system.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="openFaq(this)">What if I need more than 3 clients? <span class="faq-ico">+</span></button>
-        <div class="faq-a"><div class="faq-a-in">The Enterprise plan supports 4+ clients with custom pricing. Contact our sales team for a tailored quote and dedicated onboarding.</div></div>
+        <button class="faq-q" onclick="openFaq(this)">Does Nexus include lead capture? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-in">Yes. Pages can include branded calls to action, phone links, lead forms, and conversion paths connected to the client’s offer and brand.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="openFaq(this)">Is there a setup fee? <span class="faq-ico">+</span></button>
-        <div class="faq-a"><div class="faq-a-in">No setup fees. Every plan includes a complimentary setup call. You're generating pages within days of signing up.</div></div>
+        <button class="faq-q" onclick="openFaq(this)">What do agencies get from this? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-in">Agencies get a scalable local visibility production system without manually building every page, link, publishing structure, and report themselves.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="openFaq(this)">Can I cancel anytime? <span class="faq-ico">+</span></button>
-        <div class="faq-a"><div class="faq-a-in">Monthly plans: cancel anytime with 30 days' notice. 6-month commitment plans require completing the term. Annual plans are non-refundable after 14 days.</div></div>
+        <button class="faq-q" onclick="openFaq(this)">Does Nexus guarantee rankings? <span class="faq-ico">+</span></button>
+        <div class="faq-a"><div class="faq-a-in">No. Nexus does not sell ranking guarantees or shortcuts. The value is structured search coverage infrastructure, cleaner publishing operations, better visibility systems, and improved fulfillment capacity.</div></div>
       </div>
     </div>
   </div>
@@ -531,23 +794,24 @@
 
 <section class="cta-sec">
   <div class="container">
-    <h2 class="r">Stop selling SEO that can't scale</h2>
-    <p class="r">Nexus gives your agency the infrastructure to deliver more coverage, cleaner operations, and a more defensible offer &mdash; without adding headcount.</p>
+    <h2 class="r">Scale local search delivery without scaling fulfillment complexity</h2>
+    <p class="r">SpotOn Nexus closes the production gap for agencies that can sell local visibility faster than they can fulfill it profitably.</p>
     <div class="r"><a href="#pricing" class="btn btn-blue" style="font-size:16px;padding:14px 34px;">Book a Strategy Call &rarr;</a></div>
-    <p class="cta-phone r">&#128222; <a href="tel:8447231900">(844) 723-1900</a></p>
-    <p class="cta-note r">We'll map your first 3 client campaigns, rollout plan, and page targets on the call.</p>
+    <p class="cta-phone r">☎ <a href="tel:8447231900">(844) 723-1900</a></p>
+    <p class="cta-note r">We’ll map your first client deployment, local coverage structure, and production plan on the call.</p>
   </div>
 </section>
 
 <footer>
   <div class="container foot-in">
-    <div class="foot-logo">Nexus <span>by SpotOn</span></div>
+    <div class="foot-logo">SpotOn <span>Nexus</span></div>
     <div class="foot-links">
       <a href="#problem">Problem</a>
-      <a href="#solution">How it works</a>
+      <a href="#infrastructure">Infrastructure</a>
+      <a href="#how">How It Works</a>
+      <a href="#roi">ROI</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
-      <a href="tel:8447231900">(844) 723-1900</a>
     </div>
     <div class="foot-copy">&copy; 2026 SpotOn Nexus. All rights reserved.</div>
   </div>
@@ -555,7 +819,7 @@
 
 <script>
   function toggleMenu() { document.getElementById('mobMenu').classList.toggle('open'); }
-  function closeMob()   { document.getElementById('mobMenu').classList.remove('open'); }
+  function closeMob() { document.getElementById('mobMenu').classList.remove('open'); }
 
   function openFaq(btn) {
     const item = btn.closest('.faq-item');
@@ -564,23 +828,12 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  const monthly = ['$1,997','$1,497','$3,000','$5,000'];
-  const annual  = ['$1,598','$1,198','$2,400','$4,000'];
-  function togglePricing() {
-    const on = document.getElementById('annualToggle').checked;
-    document.getElementById('lbl-m').classList.toggle('on', !on);
-    document.getElementById('lbl-a').classList.toggle('on',  on);
-    [1,2,3,4].forEach(i => {
-      const el = document.getElementById('p' + i);
-      if (el) el.textContent = (on ? annual : monthly)[i - 1];
-    });
-  }
-
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }
     });
   }, { threshold: 0.1 });
+
   document.querySelectorAll('.r').forEach(el => observer.observe(el));
 </script>
 
